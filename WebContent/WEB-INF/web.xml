@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>ss</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 필터를 web.xml에 등록하는 형식 
+  		단 필터는 1개만 설정되어야 해서 다르곳에 web.xml을 받아들이는 곳이 있으면 안된다 (java파일에서 주석처리하기)
+   -->
+<!--    <filter>
+   	<filter-name>BoardFilter</filter-name>
+   	<filter-class>com.myweb.util.filter.BoardFilter</filter-class>
+   </filter>
+   <filter-mapping>
+   	<filter-name>BoardFilter</filter-name>
+   	<url-pattern>/board/write.board</url-pattern>
+   	<url-pattern>/board/regist.board</url-pattern>
+   </filter-mapping>
+    -->
+   
+</web-app>

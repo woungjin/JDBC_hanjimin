@@ -1,0 +1,80 @@
+-- 회원 테이블 
+create table users (
+    id varchar2 (30) not null,
+    pw varchar2 (30) not null,
+    name varchar2 (30) not null,
+    email varchar2(30),
+    address varchar2(100),
+    regdate date default sysdate
+    
+);
+alter table users add constraint users_pk primary key (id);
+
+-- 계시판 테이블 
+create table board (
+    bno number(10,0) not null,
+    writer varchar2(50) not null,
+    title varchar2(200) not null,
+    content varchar2(2000) ,
+    regdate date default sysdate,
+    hit number(10,0) default 0 
+);
+alter table board add constraint board_pk primary key (bno);
+create sequence board_seq start with 1 increment by 1 nocache;
+
+
+
+-- dB에 게시판 글 넣기
+
+select count(*) from board;
+delete from board;
+declare
+    var1 number := 1;
+begin
+
+    while var1 <= 100
+    LOOP
+        insert INTO board(bno, writer, title, content ) values(board_seq.nextval, 'test' , 'test', 'test');
+        insert into board(bno, writer, title, content ) values(board_seq.nextval, 'admin' ,'admin' , 'admin');
+        insert into board(bno, writer, title, content ) values(board_seq.nextval, 'test02', 'test02' ,'test02');
+        
+        var1 := var1+1;
+    END LOOP;
+    commit;
+
+end;
+
+select *
+from (select rownum rn, bno,writer,title,content,regdate,hit 
+    from (select * from board order by bno desc)
+) where rn > 10 and rn <= 20; 
+
+
+
+
+
+------------------------------------------------------------testWeb
+create table users (
+    id varchar2 (30) not null,
+    pw varchar2 (30) not null,
+    name varchar2 (30) not null,
+    email varchar2(30),
+    address varchar2(100),
+    phone varchar2(100),
+    regdate date default sysdate
+    
+);
+alter table users add constraints users_pk primary key(id);
+
+
+create table board (
+    bno number(10,0) not null,
+    writer varchar2(50) not null,
+    title varchar2(200) not null,
+    content varchar2(2000) ,
+    regdate date default sysdate,
+    hit number(10,0) default 0 
+);
+alter table board add constraint board_pk primary key (bno);
+create sequence board_seq start with 1 increment by 1 nocache;
+
